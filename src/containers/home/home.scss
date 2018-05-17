@@ -1,0 +1,22 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+button,
+input {
+  outline: none;
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 4px 2px #3593e4;
+  }
+}
+
+.gallery {
+  &__infinite-scroll-wrapper {
+    height: 150px;
+  }
+}
+
