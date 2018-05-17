@@ -11,6 +11,9 @@ import { getImageDetailStatus } from '../../reducers/fetchDataReducer';
 
 // Components
 import Image from '../../components/image/Image';
+import Loader from '../../components/loader/Loader';
+
+import './imageDetails.scss';
 
 class ImageDetails extends Component {
   static propTypes = {
@@ -32,12 +35,24 @@ class ImageDetails extends Component {
     return (
       <Fragment>
         {this.props.imageDetailStatus === 'successful' &&
-          <div>
-            <Image photo={photo} />
-            <p>Author: {photo.owner.realname}</p>
-            <p>Description: {photo.description._content}</p>
-            <p>Date: {photo.dates.taken}</p>
+          <div className="image-details">
+            <div className="image-details__image">
+              <Image photo={photo} />
+            </div>
+            <div className="image-details__data">
+              {photo.owner.realname && <p className="image-details__data-item"><span className="image-details__title">Author:</span> {photo.owner.realname}</p>}
+              {photo.description._content &&
+                <p className="image-details__data-item">
+                  <span className="image-details__title">Description:</span>
+                  <span dangerouslySetInnerHTML={{ __html: photo.description._content }} />
+                </p>
+                }
+              {photo.dates.taken && <p className="image-details__data-item"><span className="image-details__title">Date:</span> {photo.dates.taken}</p>}
+            </div>
           </div>
+        }
+        {this.props.imageDetailStatus === 'loading' &&
+          <Loader />
         }
       </Fragment>
     );

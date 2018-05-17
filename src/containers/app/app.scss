@@ -1,0 +1,39 @@
+body {
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Open Sans', sans-serif;
+  color: #444;
+}
+
+h1 {
+  font-size: 20px;
+  color: #444;
+  padding: 2vw;
+  margin: 0;
+}
+
+a {
+  color: #444;
+}
+
+button,
+input {
+  outline: none;
+
+  &:focus,
+  &:active {
+    box-shadow: 0 0 4px 2px #3593e4;
+  }
+}
+
+.clearfix {
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+.main-wrapper {
+  margin-top: 40px;
+}

@@ -11,11 +11,14 @@ import About from '../imageDetails/ImageDetails';
 // Components
 import Menu from '../../components/menu/Menu';
 
+// Style
+import './app.scss';
+
 class App extends Component {
   render() {
     return (
       <Router>
-        <div className="container">
+        <div className="main-wrapper">
           <Menu />
           <Route exact path="/" component={Home} />
           <Route path="/image-details/:id" component={About} />

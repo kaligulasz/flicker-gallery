@@ -1,6 +1,7 @@
 import {
   FETCH_DATA_DONE,
   FETCH_DATA_FAILED,
+  FETCH_IMAGE_DETAIL_DATA_START,
   FETCH_IMAGE_DETAIL_DATA_DONE,
   FETCH_ADDITIONAL_DATA_START,
   FETCH_ADDITIONAL_DATA_DONE,
@@ -33,6 +34,11 @@ const apiData = (state = {
       return {
         ...state,
         additionalDataLoading: false,
+      };
+    case FETCH_IMAGE_DETAIL_DATA_START:
+      return {
+        ...state,
+        imageDetailStatus: 'loading',
       };
     case FETCH_IMAGE_DETAIL_DATA_DONE:
       return {
