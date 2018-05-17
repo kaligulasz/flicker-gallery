@@ -6,3 +6,4 @@ workspace.xml
 *.pyc
 .idea
 vcs.xml
+/yarn.lock

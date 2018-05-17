@@ -14,9 +14,18 @@ input {
   }
 }
 
-.gallery {
+.clearfix {
+  &::after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+.home {
   &__infinite-scroll-wrapper {
-    height: 150px;
+    height: 50px;
+    margin: 30px;
   }
 }
 

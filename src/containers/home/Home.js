@@ -46,6 +46,12 @@ class Home extends Component {
     ) {
       this.infiniteScrollObserver();
     }
+
+    if (
+      this.props.additionalDataLoading !== prevProps.additionalDataLoading
+    ) {
+      this.infiniteScrollObserver();
+    }
   }
 
   loadingRef = React.createRef();
@@ -86,9 +92,11 @@ class Home extends Component {
         { appStatus === 'successful' &&
         <Fragment>
           <List galleryList={galleryList.photos.photo} />
-          <div className="home__infinite-scroll-wrapper" ref={this.loadingRef} >
-            {this.props.additionalDataLoading && <Loader />}
-          </div>
+          <div
+            className="home__infinite-scroll-wrapper"
+            ref={this.loadingRef}
+          />
+          {this.props.additionalDataLoading && <Loader />}
         </Fragment>
         }
 

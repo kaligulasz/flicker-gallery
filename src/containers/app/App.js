@@ -2,23 +2,21 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
 } from 'react-router-dom';
 
+// Containers
 import Home from '../home/Home';
 import About from '../imageDetails/ImageDetails';
+
+// Components
+import Menu from '../../components/menu/Menu';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="container">
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-          </ul>
-
+          <Menu />
           <Route exact path="/" component={Home} />
           <Route path="/image-details/:id" component={About} />
         </div>
