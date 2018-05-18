@@ -7,7 +7,7 @@ import './galleryItem.scss';
 
 const GalleryItem = ({ item }) => (
   <div className="gallery-item">
-    <Link to={`/image-details/${item.id}`}>
+    <Link to={`/image-details/${item.id}/${item.secret}`}>
       <Thumbnail item={item} />
     </Link>
   </div>

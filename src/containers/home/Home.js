@@ -12,6 +12,7 @@ import { getAppStatus, getAdditionalDataLoading } from '../../reducers/fetchData
 // Components
 import List from '../../components/list/List';
 import Loader from '../../components/loader/Loader';
+import Error from '../../components/error/Error';
 
 // Styles
 import './home.scss';
@@ -103,10 +104,7 @@ class Home extends Component {
         { appStatus === 'loading' &&
           <Loader />
         }
-
-        { appStatus === 'failed' &&
-        <h3>error :(</h3>
-        }
+        <Error error={this.props.appStatus} />
       </div>
     );
   }

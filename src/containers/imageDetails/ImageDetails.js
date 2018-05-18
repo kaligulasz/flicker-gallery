@@ -12,6 +12,7 @@ import { getImageDetailStatus } from '../../reducers/fetchDataReducer';
 // Components
 import Image from '../../components/image/Image';
 import Loader from '../../components/loader/Loader';
+import Error from '../../components/error/Error';
 
 import './imageDetails.scss';
 
@@ -24,7 +25,11 @@ class ImageDetails extends Component {
   };
 
   componentDidMount() {
-    this.props.onFetchImageDetails(this.props.match.params.id);
+    this.props.onFetchImageDetails(
+      this.props.match.params.id,
+      this.props.match.params.secret,
+      this.props.match,
+    );
   }
 
   render() {
@@ -43,7 +48,7 @@ class ImageDetails extends Component {
               {photo.owner.realname && <p className="image-details__data-item"><span className="image-details__title">Author:</span> {photo.owner.realname}</p>}
               {photo.description._content &&
                 <p className="image-details__data-item">
-                  <span className="image-details__title">Description:</span>
+                  <span className="image-details__title">Description: </span>
                   <span dangerouslySetInnerHTML={{ __html: photo.description._content }} />
                 </p>
                 }
@@ -54,6 +59,7 @@ class ImageDetails extends Component {
         {this.props.imageDetailStatus === 'loading' &&
           <Loader />
         }
+        <Error error={this.props.imageDetailStatus} />
       </Fragment>
     );
   }

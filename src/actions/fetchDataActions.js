@@ -7,6 +7,7 @@ export const FETCH_IMAGE_DETAIL_DATA_START = 'FETCH_IMAGE_DETAIL_DATA_START';
 export const FETCH_IMAGE_DETAIL_DATA_DONE = 'FETCH_IMAGE_DETAIL_DATA_DONE';
 export const FETCH_ADDITIONAL_DATA_START = 'FETCH_ADDITIONAL_DATA_START';
 export const FETCH_ADDITIONAL_DATA_DONE = 'FETCH_ADDITIONAL_DATA_DONE';
+export const FETCH_IMAGE_DETAIL_DATA_FAILED = 'FETCH_IMAGE_DETAIL_DATA_FAILED';
 
 
 export const getDataDone = data => ({
@@ -34,6 +35,11 @@ export const getImageDetailDataStart = () => ({
 export const getImageDetailDataDone = data => ({
   type: FETCH_IMAGE_DETAIL_DATA_DONE,
   data,
+});
+
+export const getImageDetailDataFailed = error => ({
+  type: FETCH_IMAGE_DETAIL_DATA_FAILED,
+  error,
 });
 
 export const fetchGalleryListData = (defaultPage = 1) => (
@@ -72,7 +78,7 @@ export const fetchImageDetailData = (photoId, secret) => (
         dispatch(getImageDetailDataDone(data));
       })
       .catch((error) => {
-        dispatch(getDataFailed(error));
+        dispatch(getImageDetailDataFailed(error));
       });
   }
 );

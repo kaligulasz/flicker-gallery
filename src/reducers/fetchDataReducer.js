@@ -3,6 +3,7 @@ import {
   FETCH_DATA_FAILED,
   FETCH_IMAGE_DETAIL_DATA_START,
   FETCH_IMAGE_DETAIL_DATA_DONE,
+  FETCH_IMAGE_DETAIL_DATA_FAILED,
   FETCH_ADDITIONAL_DATA_START,
   FETCH_ADDITIONAL_DATA_DONE,
 } from '../actions/fetchDataActions';
@@ -24,6 +25,7 @@ const apiData = (state = {
       return {
         ...state,
         appStatus: 'failed',
+        additionalDataLoading: false,
       };
     case FETCH_ADDITIONAL_DATA_START:
       return {
@@ -44,6 +46,11 @@ const apiData = (state = {
       return {
         ...state,
         imageDetailStatus: 'successful',
+      };
+    case FETCH_IMAGE_DETAIL_DATA_FAILED:
+      return {
+        ...state,
+        imageDetailStatus: 'failed',
       };
     default:
       return state;
